@@ -43,7 +43,7 @@ The app should be able to:
 
     If a meal doesnt contain a list of ingredients, then custoemr is warned that their food may contain food allergen.
 
-![image](https://imgur.com/a/Kj2UEJS)
+![image](https://imgur.com/a/N9hlCtL)
 
     
 
