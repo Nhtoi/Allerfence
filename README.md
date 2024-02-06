@@ -43,7 +43,7 @@ The app should be able to:
 
     If a meal doesnt contain a list of ingredients, then custoemr is warned that their food may contain food allergen.
 
-We have placed the image indicating teh groupm members responsibilties in an images folder in this repo.
+We have placed the image indicating the group members responsibilties in an images folder in this repo.
 
     
 
