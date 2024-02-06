@@ -43,7 +43,7 @@ The app should be able to:
 
     If a meal doesnt contain a list of ingredients, then custoemr is warned that their food may contain food allergen.
 
-    ![image](https://github.com/Nhtoi/Allerfence/assets/70299348/4a93644f-fe6c-4a39-bae0-e93e7b86bea2)
+We have placed the image indicating teh groupm members responsibilties in an images folder in this repo.
 
     
 
