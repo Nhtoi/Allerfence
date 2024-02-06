@@ -42,6 +42,8 @@ The app should be able to:
     Allow customers to order food and the app automatically detect the allergens and autofill in the text book to remove certain allergens from a meal.
 
     If a meal doesnt contain a list of ingredients, then custoemr is warned that their food may contain food allergen.
-    
+
+    ![image](https://github.com/Nhtoi/Allerfence/assets/70299348/4a93644f-fe6c-4a39-bae0-e93e7b86bea2)
+
     
 
