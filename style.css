@@ -1,0 +1,19 @@
+/*
+I will try to start learning some css,
+so i can help you a little  
+-Kevin
+*/
+body{
+text-align: center;
+}
+
+nav{
+    display: flex;
+    
+    margin-top: 50px;
+    border-style: solid;
+    border-color: black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
