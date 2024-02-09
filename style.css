@@ -12,22 +12,38 @@ body{
  height: 100%;
  margin: 0;
 }
-.block1,
-.block2,
-.block3{
-  width: 100%;
-  height: 100%;
+.block1{
+width: 100%;
+height:100%;
 }
+.block2{
+width:100%;
+height:150px;
+}
+.block3{
+    width:100%;
+    height:500px;
+}
+
 .block1{
     background-image: url(images/homepage.jpeg);
     background-size: 100%;
 }
+
 .block2{
     background-color: transparent;
+    display: flex;
+    align-items: center;
+    
 }
+#searchBox{
+    border-style: solid;
+}
+
 .block3{
     background-color: aqua;
 }
+
 #navigation{
     font-family: "Bungee";
     font-size: large;
@@ -37,12 +53,14 @@ body{
 }
 #logo{
     border-style: solid;
+    margin-top: 20px;
+    margin-left: 30px;
 }
 
 #buttons{
 display: flex;
 justify-content: center;
-padding: 10.5px;
+padding: 20px;
 gap: 10px;
 }
 .navButton{
