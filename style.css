@@ -5,17 +5,46 @@ so i can help you a little
 */
 
 /*homepage(index)*/
+html,
 body{
-text-align: center;
+ background-color: #8FBE6A;
+ width: 100%;
+ height: 100%;
+ margin: 0;
+}
+.block1,
+.block2,
+.block3{
+  width: 100%;
+  height: 100%;
+}
+.block1{
+    background-image: url(images/homepage.jpeg);
+    background-size: 100%;
+}
+.block2{
+    background-color: transparent;
+}
+.block3{
+    background-color: aqua;
+}
+#navigation{
+    font-family: "Bungee";
+    font-size: large;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+}
+#logo{
+    border-style: solid;
 }
 
-nav{
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 50px;
-    border-style: solid;
-    border-color: black;
-    border-top: none;
-    border-left: none;
-    border-right: none;
+#buttons{
+display: flex;
+justify-content: center;
+padding: 10.5px;
+gap: 10px;
+}
+.navButton{
+    border-radius: 10px;
 }
