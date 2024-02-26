@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="login.css">
+    <script src="login.js"></script>
     <title>Log-In</title>
 </head>
+<nav>
+    <a href="index.html" class id="logo">
+        <p> AllerFence</p>
+    </a>
+</nav>
+<hr>
 <body>
-    
-    <label for="account-type">Choose an account type:</label> 
-    <select name="account-type" id="account-typde"> 
-        <option value="Merchant">Merchant</option> 
-        <option value="Costumer">Costumer</option> 
-        <option value="Driver">Driver</option> 
-    </select>
-    
-    <br>
-    <br>
+    <div class="greeting">
+        <p> Welcome back! </p>
+    </div>
+
     <form>
-      
-        <label for = "email">Email</label>
-        <input type = "text" id = "email" name = "email">
-       
-        <label for = "password">Password</label>
-        <input type = "text" id = "password" name = "password">
-        
-        <button id = "acc-login-btn">Log-In</button>
-        
+        <label for="accountType" class="chooseAcc"> Choose an account type </label>
+        <select name="accountType" id="dropDownOptions">
+            <option value="Merchant">Merchant</option>
+            <option value="Costumer">Costumer</option>
+            <option value="Driver">Driver</option>
+        </select>
+
+        <div class="emailForm">
+        <label for="email">Email</label>
+        <input type="text" class="emailInput" name="email">
+        </div>
+
+        <div class ="passwordForm">
+        <label for="password">Password</label>
+        <input type="text" class="passwordInput" name="password">
+        </div>
+        <button id="accLoginBtn">Log-In</button>
+
     </form>
-    
-    <script src = "login.js"></script>
+
 </body>
+
 </html>
