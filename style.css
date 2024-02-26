@@ -1,21 +1,92 @@
-/*
-I will try to start learning some css,
-so i can help you a little  
--Kevin
-*/
-
-/*homepage(index)*/
-body{
-text-align: center;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7; /* Light gray background */
+    margin: 0;
+    padding: 0;
 }
 
-nav{
+#nav-bar {
+    background-color: #14ad38; /* Black navigation bar */
+    color: white;
+    padding: 20px 40px;
     display: flex;
-    justify-content: flex-end;
-    margin-top: 50px;
-    border-style: solid;
-    border-color: black;
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #050404; /* Dark red border at the bottom */
+    img {
+        width: 30px; 
+        height: 30px;
+        border: #050404;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
+
+
+#nav-bar #logo {
+    background-image: url('allerfence-logo.png'); /* Path to your logo image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 40px;
+}
+
+#nav-bar button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+#nav-bar button:hover {
+    background-color: rgba(0, 0, 0, 0.2); /* Darker background on hover */
+}
+
+.order {
+    background-color: white;
+    border: 1px solid #141212; /* Light gray border */
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order h2 {
+    margin-top: 0;
+}
+
+.order p {
+    margin: 10px 0; 
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #d32f2f; /* Dark red button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #b71c1c; /* Darker red on hover */
+}
+
+#settings-btn {
+    background-image: url('settings-icon.png');
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+}
+
+#settings-btn:hover {
+    background-color: transparent;
 }
