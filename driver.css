@@ -10,7 +10,7 @@ body {
 }
 
 #nav-bar {
-    background-color: #14ad38; 
+    background-color: #333;
     color: white;
     padding: 20px 40px;
     display: flex;
