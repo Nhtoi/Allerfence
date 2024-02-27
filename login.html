@@ -10,7 +10,7 @@
     <title>Log-In</title>
 </head>
 <nav>
-    <a href="index.html" class id="logo">
+    <a href="index.html" id="logo">
         <p> AllerFence</p>
     </a>
 </nav>
@@ -24,23 +24,47 @@
         <label for="accountType" class="chooseAcc"> Choose an account type </label>
         <select name="accountType" id="dropDownOptions">
             <option value="Merchant">Merchant</option>
-            <option value="Costumer">Costumer</option>
+            <option value="Customer">Customer</option>
             <option value="Driver">Driver</option>
         </select>
 
         <div class="emailForm">
-        <label for="email">Email</label>
-        <input type="text" class="emailInput" name="email">
+            <label for="email">Email</label>
+            <input type="text" class="emailInput" name="email">
         </div>
 
-        <div class ="passwordForm">
-        <label for="password">Password</label>
-        <input type="text" class="passwordInput" name="password">
+        <div class="passwordForm">
+            <label for="password">Password</label>
+            <input type="text" class="passwordInput" name="password">
         </div>
-        <button id="accLoginBtn">Log-In</button>
 
     </form>
+    <a id="accLoginBtn" href="#" onclick="login()">Log-In</a>
 
+    <script>
+        function login() {
+            var accountType = document.getElementById("dropDownOptions").value;
+            var loginUrl = "";
+
+            switch (accountType) {
+                case "Merchant":
+                    loginUrl = "restaurant.html";
+                    break;
+                case "Customer":
+                    loginUrl = "dashboard.html";
+                    break;
+                case "Driver":
+                    loginUrl = "Driver.html";
+                    break;
+                default:
+                    // handle default case or show an error message
+                    break;
+            }
+
+            // Redirect to the constructed URL
+            window.location.href = loginUrl;
+        }
+    </script>
 </body>
 
 </html>
