@@ -8,17 +8,24 @@
 </head>
 <body>
     <nav id="nav-bar">
-        <button id="settings-btn">☰</button> 
-        <button onclick="HandleLogout()">Log-Out</button>
-        <button type="submit">
-        <img src="goLive.jpeg" alt="buttonpng"  />
-          </button>
-    
+
+
+        <button id="settings-btn">☰</button>
+                <button id="home-btn" onclick="goToHome()">Allerfence</button>
+                <button type="submit" class="go-live-button">
+                    Go Live <img src="goLive.jpeg" alt="buttonpng" />
+                </button>
+                
     </nav>
     
     <div class="orders-container">
     </div>
 
     <script src="drivers_dashboard.js"></script> 
+    <script>
+        function goToHome() {
+            window.location.href = "index.html"; 
+        }
+    </script>
 </body>
 </html>
