@@ -23,7 +23,7 @@ function displayOrders() {
         orderDiv.dataset.orderId = order.id;
         orderDiv.innerHTML = `
             <h2>Order #${order.id}</h2>
-            <p>Customer Name: ${order.customerName}</p>
+            <p>Customer Name: ${order.customerName} </p>
             <p>Trip Distance: ${order.distance}</p>
 
             <p>Order Items: ${order.items.join(', ')}</p>
