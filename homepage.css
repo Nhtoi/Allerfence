@@ -7,7 +7,7 @@ so i can help you a little
 /*homepage(index)*/
 html,
 body{
- background-color: #F2E9EA;
+ background-color: white;
  width: 100%;
  height: 100%;
  margin: 0;
@@ -51,6 +51,7 @@ justify-content: center;
     background-color: transparent;
 }
 #map {
+    border-style: solid; border-width: 2px;
     height: 100%; /* or any other height */
     width: 100%; /* or a specific width, like 600px */
 }
@@ -69,7 +70,7 @@ justify-content: center;
 #logo{
     margin-top: 20px;
     margin-left: 30px;
-    color: antiquewhite;
+    color: white;
     font-size: 30px;
     text-decoration: none;
 }
