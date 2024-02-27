@@ -6,6 +6,11 @@ body {
     background-color: #ffffff;
     color: #fff;
 }
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 
 section {
     margin-bottom: 20px;
