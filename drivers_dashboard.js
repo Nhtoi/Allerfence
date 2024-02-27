@@ -12,6 +12,10 @@ const orders = [
     { id: 10, customerName: 'James Lee', items: ['Ramen', 'Gyoza'], distance: '10 Miles', wage: 15 }
 ];
 
+function HandleLogout(){
+    window.location.href = "index.html"
+}
+
 
 function displayOrders() {
     const ordersContainer = document.querySelector('.orders-container');
@@ -70,4 +74,6 @@ document.addEventListener('click', function(event) {
         denyOrder(orderId);
     }
 });
+
+
 
