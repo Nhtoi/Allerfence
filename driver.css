@@ -1,18 +1,22 @@
 body {
     font-family: Arial, sans-serif;
+<<<<<<< HEAD:driver.css
     background-color: #cdd3cd; /* Light gray background */
+=======
+    background-color: #f7f7f7; 
+>>>>>>> ed8d8d9d420b526e470202657d42d585af35594e:style.css
     margin: 0;
     padding: 0;
 }
 
 #nav-bar {
-    background-color: #14ad38; /* Black navigation bar */
+    background-color: #14ad38; 
     color: white;
     padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #050404; /* Dark red border at the bottom */
+    border-bottom: 2px solid #050404; 
     img {
         width: 30px; 
         height: 30px;
@@ -25,7 +29,7 @@ body {
 
 
 #nav-bar #logo {
-    background-image: url('allerfence-logo.png'); /* Path to your logo image */
+    background-image: url('allerfence-logo.png'); 
     background-size: contain;
     background-repeat: no-repeat;
     width: 100px;
@@ -44,12 +48,11 @@ body {
 }
 
 #nav-bar button:hover {
-    background-color: rgba(0, 0, 0, 0.2); /* Darker background on hover */
-}
+    background-color: rgba(0, 0, 0, 0.2); 
 
 .order {
     background-color: white;
-    border: 1px solid #141212; /* Light gray border */
+    border: 1px solid #141212;
     border-radius: 20px;
     margin-bottom: 20px;
     padding: 20px;
@@ -67,7 +70,7 @@ body {
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #d32f2f; /* Dark red button */
+    background-color: #d32f2f; 
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -76,9 +79,7 @@ body {
 }
 
 .btn:hover {
-    background-color: #b71c1c; /* Darker red on hover */
-}
-
+    background-color: #b71c1c; 
 #settings-btn {
     background-image: url('settings-icon.png');
     background-size: cover;
