@@ -3,19 +3,19 @@ body {
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
-    background-color: #fff;
-    color: #333;
+    background-color: #0A0806;
+    color: white;
 }
 
 section {
     margin-bottom: 20px;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid white;
     border-radius: 10px;
 }
 
 h2 {
-    color: #333;
+    color: white;
 }
 
 .earnings {
@@ -47,5 +47,5 @@ a {
     display: block;
     margin-top: 20px;
     text-decoration: none;
-    color: #333;
+    color: white;
 }

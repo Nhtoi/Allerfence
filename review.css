@@ -1,0 +1,56 @@
+body {
+    background-color: #0A0806;
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+    color: white;
+
+}
+
+nav {
+    font-family: "Bungee";
+    padding-left: 15px;
+    display: flex;
+    justify-content: start;
+}
+
+#logo {
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+
+}
+main{
+    display: flex;
+    justify-content: center;
+}
+.encourgement{
+    padding:10px;
+    width: 70%;
+}
+#thisCustomersReview{
+    border-style: solid;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+.commentForm{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+}
+.communityReviews{
+    display: flex;
+    flex-direction: column;
+    
+    padding: 10px;
+}
+.review1,
+.review2{
+    border-style: solid;
+    margin-top: 10px;
+    padding: 10px;
+}
+/**Hypothetical reviews for the time being**/
