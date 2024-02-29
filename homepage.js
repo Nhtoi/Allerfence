@@ -1,4 +1,6 @@
+let map = document.getElementById("map")
 
+map.innerHTML =  '<script async defer src="https://maps.googleapis.com/maps/api/js?key=${process.env.API_KEY}&callback=initMap"> </script>'
 
 function initMap(){
     var location = {lat: 36.066960, lng: -79.818660};
