@@ -20,10 +20,10 @@
         <p> Welcome back! </p>
     </div>
 
-    <form>
-        <label for="accountType" class="chooseAcc"> Choose an account type </label>
-        <select name="accountType" id="dropDownOptions">
-            <option value="Merchant">Merchant</option>
+    <form id="loginForm" action="javascript:void(0)">
+        <label for="userType" class="chooseAcc"> Choose an account type </label>
+        <select name="userType" id="dropDownOptions">
+            <option value="Vendor">Vendor</option>
             <option value="Customer">Customer</option>
             <option value="Driver">Driver</option>
         </select>
@@ -35,36 +35,13 @@
 
         <div class="passwordForm">
             <label for="password">Password</label>
-            <input type="text" class="passwordInput" name="password">
+            <input type="password" class="passwordInput" name="password">
         </div>
 
+        <button id="accLoginBtn" href="#" onclick="login(event)">Log-In</button>
     </form>
-    <a id="accLoginBtn" href="#" onclick="login()">Log-In</a>
-
-    <script>
-        function login() {
-            var accountType = document.getElementById("dropDownOptions").value;
-            var loginUrl = "";
-
-            switch (accountType) {
-                case "Merchant":
-                    loginUrl = "restaurant.html";
-                    break;
-                case "Customer":
-                    loginUrl = "dashboard.html";
-                    break;
-                case "Driver":
-                    loginUrl = "Driver.html";
-                    break;
-                default:
-                    // handle default case or show an error message
-                    break;
-            }
-
-            // Redirect to the constructed URL
-            window.location.href = loginUrl;
-        }
-    </script>
+    
+    <script src="login.js"></script>
 </body>
 
 </html>
