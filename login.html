@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js"></script>
+    <title>Log-In</title>
+</head>
+<nav>
+    <a href="index.html" id="logo">
+        <p> AllerFence</p>
+    </a>
+</nav>
+<hr>
+<body>
+    <div class="greeting">
+        <p> Welcome back! </p>
+    </div>
+
+    <form id="loginForm" action="javascript:void(0)">
+        <label for="userType" class="chooseAcc"> Choose an account type </label>
+        <select name="userType" id="dropDownOptions">
+            <option value="Vendor">Vendor</option>
+            <option value="Customer">Customer</option>
+            <option value="Driver">Driver</option>
+        </select>
+
+        <div class="emailForm">
+            <label for="email">Email</label>
+            <input type="text" class="emailInput" name="email">
+        </div>
+
+        <div class="passwordForm">
+            <label for="password">Password</label>
+            <input type="password" class="passwordInput" name="password">
+        </div>
+
+        <button id="accLoginBtn" href="#" onclick="login(event)">Log-In</button>
+    </form>
+    
+    <script src="login.js"></script>
+</body>
+
+</html>
+
