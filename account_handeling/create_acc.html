@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="create_acc.css">
+  <script src = "create_acc.js"></script> 
+    <script src = "create_acc.js"></script> 
+    <title>Sign-Up</title>
+</head>
+<nav>
+    <a href="index.html" class id="logo">
+        <p> AllerFence</p>
+    </a>
+</nav>
+<hr>
+<body>
+    <div class="greeting">
+        <p> We are excited to see you join our community`   ! </p>
+    </div>
+    <form>
+        
+        <label for="userType">User Type</label>
+        <select name="userType" id="userType">
+            <option value="Customer">Customer</option>
+            <option value="Driver">Driver</option>
+            <option value="Vendor">Vendor</option>
+        </select>
+        
+        <label for = "firstName">First Name</label>
+        <input type = "text" id = "firstName" name = "firstName">
+        <label for = "lastName">Last Name</label>
+        <input type = "text" id = "lastName" name = "lastName">
+        <br>
+        <br>
+        <label for = "phoneNum">Phone Number</label>
+        <input type = "text" id = "phoneNum" name = "phoneNum">
+        <br>
+        <br>
+        <label for = "email">Email</label>
+        <input type = "text" id = "email" name = "email">
+        
+        <label for="conf-email">Confirm Email</label>
+        <input type = "text" id = "conf-email" name = "conf-email">
+        <br>
+        <br>
+        <label for = "password">Password</label>
+        <input type = "text" id = "password" name = "password">
+        
+        <label for="conf-password">Confirm Password</label>
+        <input type = "text" id = "conf-password" name = "conf-password">
+        <br>
+        <br>
+        
+        <a href="#" id="signUpBut" onclick="signUp(event)"> <button> Sign-Up </button></a>
+    </form>
+    </form>
+
+    
+
+</body>
+</html>
