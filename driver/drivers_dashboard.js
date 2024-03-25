@@ -13,7 +13,7 @@ const orders = [
 ];
 
 function HandleLogout(){
-    window.location.href = "index.html"
+    window.location.href = "../index.html"
 }
 
 
