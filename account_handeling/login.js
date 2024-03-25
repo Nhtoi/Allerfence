@@ -29,12 +29,15 @@ function login(event) {
         // Handle the response from the server
         console.log(data);
 
-        // Assuming your server sends a success status or token upon successful login
         if (data.success) {
+            // Save user credentials to localStorage
+            localStorage.setItem('userType', userType);
+            localStorage.setItem('email', email);
+            localStorage.setItem('password', password);
+
             // Redirect based on account type
             redirectBasedOnAccountType(userType);
         } else {
-            // Handle login failure (show error message, etc.)
             console.error('Login failed:', data.error);
         }
     })
