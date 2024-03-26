@@ -1,5 +1,3 @@
-// authentication.controller.js
-
 const Customer = require('../models/customer.model');
 
 async function getUserByEmail(req, res) {
