@@ -12,7 +12,6 @@ const login = async (req, res) =>{
             const isPasswordCheck = await bcrypt.compare(req.body.password, check.password)
             if(isPasswordCheck){
                 res.status(200).json({ success: true });
-                res.render('dashboard')
             } else{
                 res.send("Password is incorrect")
             }

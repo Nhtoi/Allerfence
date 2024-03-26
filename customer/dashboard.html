@@ -3,31 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Create Order</title>
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
     <!--Top left corner sort of drop down-->
     <section id="sideBar">
         <a href="profile.html">Profile</a>
-        <a href = "review.html"> Make a review post! </a>
+        <a href="review.html">Make a review post!</a>
         <a href="../index.html">Sign-Out</a>
     </section>
 
     <section id="main">
         <div class="heading1">
-        <h1> Your current order </h1>
-        </div>
+            <div class="createOrder-div">
+                <form id="createOrderForm">
+                    <label for="orderId">Order ID:</label>
+                    <input type="text" id="orderId" name="orderId" required><br>
 
+                    <label for="status">Status:</label>
+                    <input type="text" id="status" name="status" required><br>
+
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required><br>
+
+                    <label for="name">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" required><br>
+
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" name="price" required><br>
+
+                    <label for="type">Type:</label>
+                    <input type="text" id="type" name="type" required><br>
+
+                    <button type= "button" id= "create" onclick="CreateOrder()">Create Order</button>
+                </form>
+            </div>
+        </div>
         
         <div class="clientOrder">
-            <h2> Order ID: 123456789 </h2>
-            <h3> Dish: Pupusa </h3>
-            <h3> Allergen Listed: </h3>
+            <!-- This section can be used to display orders -->
         </div>
-   
-
     </section>
-    
+    <script src="customer.js"></script>
 </body>
 </html>
