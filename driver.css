@@ -12,7 +12,7 @@ body {
    top: 0; /* Position at the top */
    left: 0; /* Position at the left */
    right: 0; /* Position at the right */
-    background-color: #14ad38; 
+    background-color: #333;
     color: white;
     padding: 20px 40px;
     display: flex;
