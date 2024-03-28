@@ -1,8 +1,3 @@
-/*
-I will try to start learning some css,
-so i can help you a little  
--Kevin
-*/
 
 /*homepage(index)*/
 html,
@@ -21,7 +16,7 @@ background-size: 100%;
 }
 .block2{
 width:100%;
-height:150px;
+height:30%;
 display: flex;
 align-items: center;
 justify-content: center;
