@@ -60,3 +60,37 @@ function CreateOrder() {
         // Handle error, maybe show an error message to the user
     });
 }
+
+
+function searchRestaurant(event) {
+    event.preventDefault();
+    // Get the user input from the search form
+    const userInput = document.getElementById('searchForm');
+    const userInputData = new FormData(userInput);
+
+    // Extract the restaurant name entered by the user
+    const restaurantName = userInputData.get('search'); // Corrected to 'search'
+
+    // Perform a search request to your server
+    fetch('http://localhost:3000/searchRestaurant', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: restaurantName })
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error('Restaurant not found');
+    })
+    .then(data => {
+        // Display the restaurant data to the user
+        console.log(data); 
+    })
+    .catch(error => {
+        console.error(error);
+
+    });
+}

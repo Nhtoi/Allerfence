@@ -10,12 +10,20 @@
     <!--Top left corner sort of drop down-->
     <section id="sideBar">
         <a href="profile.html">Profile</a>
+        <a href="orders.html">View Orders</a>
         <a href="review.html">Make a review post!</a>
         <a href="../index.html">Sign-Out</a>
     </section>
-
     <section id="main">
-        <div class="heading1">
+        <div class="heading1"></div>
+        <form id="searchForm">
+            <label for="search"></label>
+            <input type="text" name="search" class="search">
+            <button class="search-btn" onclick="searchRestaurant(event)">Search</button>
+        </form>
+        </section>
+   
+        <!--
             <div class="createOrder-div">
                 <form id="createOrderForm">
                     <label for="orderId">Order ID:</label>
@@ -39,12 +47,10 @@
                     <button type= "button" id= "create" onclick="CreateOrder()">Create Order</button>
                 </form>
             </div>
-        </div>
+        </div> -->
         
-        <div class="clientOrder">
-            <!-- This section can be used to display orders -->
-        </div>
-    </section>
+        
+  
     <script src="customer.js"></script>
 </body>
 </html>
