@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #0A0806;
+    color: white;
+}
+
+section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+h2 {
+    color: white;
+}
+
+.earnings {
+    font-size: 1.5em;
+    color: #4CAF50;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.menu-item button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menu-item button:hover {
+    background-color: #45a049;
+}
+
+a {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: white;
+}
