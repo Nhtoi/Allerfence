@@ -1,3 +1,5 @@
+import {io} from 'socket.io-client'
+const socket = io("http://localhost:3000")
 // Simulated 
 const orders = [
     { id: 1, customerName: 'John Doe', items: ['Pizza', 'Salad'], distance: '10 Miles', wage: 15 },
