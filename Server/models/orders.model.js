@@ -2,39 +2,36 @@ const mongoose = require('mongoose');
 
 const OrderSchema = mongoose.Schema(
     {
-        // orderId: {
-        //     type: String, 
-        //     required: true,
-        //     unique: true 
-        // },
-        // userId: {
-        //     type: mongoose.Schema.Types.ObjectId, 
-        //     required: true
-        // },
+        userId: {
+            type: mongoose.Schema.Types.ObjectId, 
+            required: true
+        },
         status: {
             type: String, 
-            required: true,
+            required: false,
             default: 'pending' 
         },
         items: [{
             name: { type: String, required: true }, 
             quantity: { type: Number, required: true }, 
+            price: { type: Number, required: true }, 
             
         }],
-        price: {
-            type: Number, 
-            required: true
+        total: {
+            type: Number,
+            required: false
+
         },
         type: {
             type: String, //'delivery', 'pickup'
-            required: true
+            required: false
         },
-        //Here for when restaurant schema is created
-        // restaurant: {
-        //     type: mongoose.Schema.Types.ObjectId,
-        //     ref: 'Restaurant',
-        //     required: true
-        // }
+
+        restaurant: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Restaurant',
+            required: true
+        }
     },
     {
         timestamps: true

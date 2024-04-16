@@ -34,7 +34,6 @@ function login(event) {
             localStorage.setItem('userType', userType);
             localStorage.setItem('email', email);
             localStorage.setItem('password', password);
-
             // Redirect based on account type
             redirectBasedOnAccountType(userType);
         } else {

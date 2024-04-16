@@ -8,28 +8,23 @@
 </head>
 <body>
     <div class="container">
-    <section class ="section1">
-        <h2>Track Your Orders</h2>
-        <div class="order-tracker">
-            <div class="order-status">
-                <p>Order Status: In Progress</p>
+        <section class ="section1">
+            <h2>Track Your Orders</h2>
+            <div class="order-tracker">
+                <div class="order-status">
+                    <p id="orderStatus">Order Status:</p>
+                </div>
+                <button class="button" onclick="TrackOrder()">View Details</button>
             </div>
-            <button class="button">View Details</button>
-        </div>
-    </section>
+        </section>
 
-    <section class="section2">
-        <h2>Create a New Order</h2>
-        <button class="button">Create New Order</button>
-    </section>
-
-    <section class="section3">
-        <h2>Cancel Your Order</h2>
-        <button class="button">Cancel Order</button>
-    </section>
+        <section class="section3">
+            <h2>Cancel Your Order</h2>
+            <button class="button" onclick="CancelOrder()">Cancel Order</button>
+        </section>
     </div>
 
     <a href="dashboard.html">Back</a>
+    <script src="customer.js"></script>
 </body>
 </html>
-

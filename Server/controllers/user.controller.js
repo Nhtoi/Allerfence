@@ -5,7 +5,7 @@ async function getUserByEmail(req, res) {
     try {
         const user = await Customer.findOne({ email });
         if (user) {
-            res.status(200).json(user);
+            res.status(200).json({ userId: user._id, ...user.toObject() });
         } else {
             res.status(404).json({ error: "User not found" });
         }

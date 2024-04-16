@@ -29,6 +29,10 @@ const CustomerSchema = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "UserType",
             required: true
+        },
+        Allergies:{
+            type: String,
+            required: false
         }
     },
     {
