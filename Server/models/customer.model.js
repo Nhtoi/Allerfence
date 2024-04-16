@@ -33,6 +33,10 @@ const CustomerSchema = mongoose.Schema(
         Allergies:{
             type: String,
             required: false
+        },
+        Restaurant:{
+            type: String,
+            required: false
         }
     },
     {

@@ -15,7 +15,7 @@ async function createRestaurant(req, res) {
             name,
             address,
             cuisine,
-            menuHours
+            restHours,
         });
         
         // Save the new restaurant to the database

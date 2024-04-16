@@ -23,29 +23,3 @@ h2 {
     color: #4CAF50;
 }
 
-.menu-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.menu-item button {
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.menu-item button:hover {
-    background-color: #45a049;
-}
-
-a {
-    display: block;
-    margin-top: 20px;
-    text-decoration: none;
-    color: white;
-}

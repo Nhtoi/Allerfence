@@ -33,23 +33,5 @@ mongoose.connect('mongodb+srv://admin:xCDV9stvlD6jrgQy@allerfence-users.wmfafph.
     console.log("Connection Failed", error);
 });
 
-// // Function to create a test restaurant
-// async function createTestRestaurant() {
-//     try {
-//         // Create a test restaurant
-//         const testRestaurant = await Restaurant.create({
-//             name: 'Restaurant1',
-//             address: '123 Main St, Cityville',
-//             cuisine: 'Italian',
-//             menuHours: 'Mon-Sat: 11am-10pm',
-//             menu: [
-//                 { itemName: 'Spaghetti', price: 12.99 },
-//                 { itemName: 'Margherita Pizza', price: 10.99 },
-//                 { itemName: 'Tiramisu', price: 6.99 }
-//             ],
-//         });
-//         console.log('Test restaurant created:', testRestaurant);
-//     } catch (error) {
-//         console.error('Error creating test restaurant:', error);
-//     }
-// }
+//Function to create a test restaurant
+

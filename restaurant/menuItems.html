@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="restaurant.css">
+    <title>Restaurant Dashboard</title>
+</head>
+<body>
+    <section>
+        <h2>Menu</h2>
+        <div id="menuItemsContainer">
+            <!-- Menu items will be loaded here dynamically -->
+        </div>
+        <h3>Add New Menu Item</h3>
+        <form id="addMenuItemForm">
+            <input type="text" id="name" placeholder="Item Name" required>
+            <input type="text" id="description" placeholder="Description" required>
+            <input type="number" id="price" placeholder="Price" required>
+            <input type="text" id="ingredients" placeholder="Ingredients (comma separated)" required>
+            <input type="text" id="allergens" placeholder="Allergens (comma separated)" required>
+            <button type="submit">Add Item</button>
+        </form>
+    </section>
+    <script src="menuItems.js"></script>
+</body>
+</html>

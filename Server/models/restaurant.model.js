@@ -6,6 +6,11 @@ const RestaurantSchema = mongoose.Schema({
         required: true,
         unique: false
     },
+    email: {
+        type: String,
+        required: true,
+        unique:true
+    },
     address: {
         type: String,
         required: false
@@ -14,7 +19,7 @@ const RestaurantSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    menuHours: {
+    restHours: {
         type: String,
         required: false
     },
@@ -25,6 +30,10 @@ const RestaurantSchema = mongoose.Schema({
         },
         price: {
             type: Number,
+            required: true
+        },
+        allergen: {
+            type: String,
             required: true
         }
     }],
