@@ -1,4 +1,41 @@
-document.getElementById('createMenuItemForm').addEventListener('submit', function(event) {
+// Retrieve user data based on email
+function getUserDataByEmail(email) {
+    return fetch('http://localhost:3000/getUserByEmail', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email })
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+// Retrieve email from local storage
+const userEmail = localStorage.getItem('email');
+
+// Call function to get user data using the retrieved email
+getUserDataByEmail(userEmail)
+.then(userData => {
+    if (userData) {
+        // Assuming user's name is stored directly in `name` property.
+        const firstName = userData.name.split(' ')[0]; // Adjust if name format differs
+        const welcomeMessage = document.createElement('h2');
+        welcomeMessage.textContent = `Welcome Back, ${firstName}!`;
+        document.getElementById('main').insertBefore(welcomeMessage, document.querySelector('.heading1'));
+    }
+});
+
+// Function to add a menu item
+document.getElementById('addMenuItemForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
     const itemName = document.getElementById('itemName').value;
@@ -29,12 +66,19 @@ document.getElementById('createMenuItemForm').addEventListener('submit', functio
     })
     .then(data => {
         document.getElementById('message').textContent = 'Menu item added successfully!';
+        console.log('Menu item added:', data);
     })
     .catch(error => {
         console.error('Error:', error);
         document.getElementById('message').textContent = 'Error adding menu item.';
     });
 });
+// Have yet to implement the following:
+// - updateMenuItem()
+// - deleteMenuItem()
+// - fetchMenuItems() thinking about making this to display existing menu items
+
+
 
 // //This is a harded coded restaurant for testing purposes
 // async function createTestRestaurant() {
