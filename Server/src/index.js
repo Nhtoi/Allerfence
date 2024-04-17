@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const userRoute = require('../routes/user.route.js');
 const Restaurant = require('../models/restaurant.model.js'); // Import the Restaurant model
+const restaurantRoute = require('../routes/restaurant.route');
 
 const app = express();
 
@@ -10,6 +11,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.json());
+app.use('/restaurant', restaurantRoute);
 app.use(express.urlencoded({ extended: false }));
 app.use(cors({
     origin: '*',

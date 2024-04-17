@@ -9,7 +9,7 @@ const RestaurantSchema = mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique:true
+        unique: true
     },
     address: {
         type: String,
@@ -32,10 +32,14 @@ const RestaurantSchema = mongoose.Schema({
             type: Number,
             required: true
         },
-        allergen: {
+        ingredients: [{
             type: String,
             required: true
-        }
+        }],
+        allergens: [{
+            type: String,
+            required: true
+        }]
     }],
     reviews: [{
         userId: {
