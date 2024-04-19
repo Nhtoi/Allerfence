@@ -1,5 +1,4 @@
-//retrieve user data based on email
-function getUserDataByEmail(email) {
+function getUserDataByEmail(email) { //retrieve user data based on email
     return fetch('http://localhost:3000/getUserByEmail', {
         method: 'POST',
         headers: {

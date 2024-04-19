@@ -5,6 +5,8 @@ const { getUserByEmail } = require('../controllers/user.controller.js');
 const { createOrder, trackOrder, cancelOrder} = require('../controllers/order.controller.js');
 const { searchRestaurant, createRestaurant } = require('../controllers/restaurant.controller.js');
 const { getProducts, getProduct, createProduct, updateProduct, deleteProduct } = require("../controllers/product.controller.js");
+const { addMenuItem } = require('../controllers/restaurant.controller.js'); // Import addMenuItem method
+router.post('/addMenuItem', addMenuItem); // Add route to create menu items
 
 router.post('/login', login);
 router.post('/signup', signup);

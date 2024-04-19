@@ -1,16 +1,6 @@
 const mongoose = require('mongoose');
-
+// Defining schema
 const RestaurantSchema = mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        unique: false
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
     address: {
         type: String,
         required: false
