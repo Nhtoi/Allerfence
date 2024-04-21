@@ -2,25 +2,28 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const userRoute = require('../routes/user.route.js');
-const Restaurant = require('../models/restaurant.model.js'); // Import the Restaurant model
-const restaurantRoute = require('../routes/restaurant.route');
-
 const app = express();
 
 // Middleware
-app.set('view engine', 'ejs');
-app.use(express.static('public'));
-app.use(express.json());
-app.use('/restaurant', restaurantRoute);
-app.use(express.urlencoded({ extended: false }));
 app.use(cors({
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     optionsSuccessStatus: 204,
 }));
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // Routes
+// app.use('/restaurant/', restaurantRoute);
 app.use('/', userRoute);
+
+// Log requests middleware
+app.use((req, res, next) => {
+    console.log(`[${new Date().toLocaleString()}] ${req.method} ${req.url}`);
+    next();
+});
 
 // Connect to the database and start the server
 mongoose.connect('mongodb+srv://admin:xCDV9stvlD6jrgQy@allerfence-users.wmfafph.mongodb.net/Allerfence-users?retryWrites=true&w=majority')
@@ -28,12 +31,8 @@ mongoose.connect('mongodb+srv://admin:xCDV9stvlD6jrgQy@allerfence-users.wmfafph.
     console.log("Connected to Database - users");
     app.listen(3000, () => {
         console.log("Server started on Port 3000");
-        // createTestRestaurant(); // Call the function to create the test restaurant
     });
  })
  .catch((error) => {
     console.log("Connection Failed", error);
 });
-
-//Function to create a test restaurant
-

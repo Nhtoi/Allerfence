@@ -15,7 +15,7 @@ async function createRestaurant(req, res) {
             name,
             address,
             cuisine,
-            restHours,
+            menuHours,
         });
         
         // Save the new restaurant to the database
@@ -48,7 +48,7 @@ async function addMenuItem(req, res) {
     const { restaurantId, itemName, price, ingredients, allergens } = req.body;
 
     try {
-        const restaurant = await Restaurant.findById(restaurantId);
+        const restaurant = await Restaurant.findById('661c61c2d57808d1b31eb7fe');
         if (!restaurant) {
             return res.status(404).json({ error: "Restaurant not found" });
         }

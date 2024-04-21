@@ -22,22 +22,9 @@ function getUserDataByEmail(email) {
 // Retrieve email from local storage
 const userEmail = localStorage.getItem('email');
 
-// Call function to get user data using the retrieved email
-getUserDataByEmail(userEmail)
-.then(userData => {
-    if (userData) {
-        // Assuming user's name is stored directly in `name` property.
-        const firstName = userData.name.split(' ')[0]; // Adjust if name format differs
-        const welcomeMessage = document.createElement('h2');
-        welcomeMessage.textContent = `Welcome Back, ${firstName}!`;
-        document.getElementById('main').insertBefore(welcomeMessage, document.querySelector('.heading1'));
-    }
-});
-
-// Function to add a menu item
-document.getElementById('addMenuItemForm').addEventListener('submit', function(event) {
+function addMenuItem(event) {
     event.preventDefault();
-    
+        
     const itemName = document.getElementById('itemName').value;
     const price = parseFloat(document.getElementById('price').value);
     const ingredients = document.getElementById('ingredients').value.split(',');
@@ -49,8 +36,8 @@ document.getElementById('addMenuItemForm').addEventListener('submit', function(e
         ingredients,
         allergens
     };
-
-    fetch('http://localhost:3000/restaurant/addMenuItem', {
+    console.log('Sending request with data:', menuItemData); // Debug print statement
+    fetch('http://localhost:3000/addMenuItem', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -58,6 +45,7 @@ document.getElementById('addMenuItemForm').addEventListener('submit', function(e
         body: JSON.stringify(menuItemData)
     })
     .then(response => {
+        console.log('Response:', response); // Debug print statement
         if (response.ok) {
             return response.json();
         } else {
@@ -72,7 +60,9 @@ document.getElementById('addMenuItemForm').addEventListener('submit', function(e
         console.error('Error:', error);
         document.getElementById('message').textContent = 'Error adding menu item.';
     });
-});
+}
+
+
 // Have yet to implement the following:
 // - updateMenuItem()
 // - deleteMenuItem()

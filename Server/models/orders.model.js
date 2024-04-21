@@ -27,11 +27,11 @@ const OrderSchema = mongoose.Schema(
             required: false
         },
 
-        restaurant: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Restaurant',
-            required: true
-        }
+        // restaurant: {
+        //     type: mongoose.Schema.Types.ObjectId,
+        //     ref: 'Restaurant',
+        //     required: true
+        // }
     },
     {
         timestamps: true
