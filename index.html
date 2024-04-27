@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+=======
+    <link rel="stylesheet" href="homepage.css">
+    <script src="homepage.js"></script>
+    <script src="app.js"></script>
+>>>>>>> origin/main
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=${process.env.API_KEY}&callback=initMap"> </script>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <title>Allerfence</title>
+</head>
+
+<body>
+    <section class= "block1"> 
+    <nav id="navigation">
+          
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">About</a>
+            <a href="#">Customer Login </a>
+            <a href="#">Restaurant Login</a>
+            <a href="#">Driver Login</a>
+          </div>
+          
+          <!-- Use any element to open the sidenav -->
+          <span onclick="openNav()"> <button class="navButton" id="dropDown"> ≡ </button> </span>
+
+            
+        <a href ="index.html" class id="logo"> <p> AllerFence</p> </a>
+
+        <div id="buttons">
+            <a href ="./account_handeling/login.html"> <button class="navButton">Log-In</button> </a>
+            <a href ="./account_handeling/create_acc.html "> <button class="navButton">Sign-up</button> </a>
+            
+        </div>  
+    </nav>
+
+    </section>
+    <!--Ill make a section that explain allerfence to new users-->
+    <section class="block2">
+        <input type="text" placeholder=" Search your favorite restaurants!" class="searchBox">
+    </section>
+
+    <section class="block3">
+    <div id="map"></div>
+    </section>
+
+</body>
+</html>
