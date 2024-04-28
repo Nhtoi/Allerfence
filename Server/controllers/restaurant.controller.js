@@ -37,6 +37,7 @@ async function addMenuItem(req, res) {
     }
 }
 
+
 async function createRestaurant(req, res) {
     try {
         const { name, address, cuisine, restHours, email } = req.body;

@@ -17,6 +17,8 @@ function getUserDataByEmail(email) { //retrieve user data based on email
             console.error('Error:', error);
         });
 }
+// Retrieve email from local storage
+const userEmail = localStorage.getItem('email');
 
 function addMenuItem(event) {
     event.preventDefault();
@@ -77,10 +79,6 @@ function addMenuItem(event) {
             document.getElementById('message').textContent = 'Error adding menu item.';
         });
 }
-// Retrieve email from local storage
-const userEmail = localStorage.getItem('email');
-
-
 
 function createRestaurant(event) {
     event.preventDefault(); // Prevent the default form submission
@@ -128,31 +126,79 @@ function createRestaurant(event) {
             alert("There was an error creating your restaurant.");
         });
 }
+//Now able to dynamically display user's menu items
+function displayRestaurantMenu() {
+    const userEmail = localStorage.getItem('email');
+    
+    // Ensure userEmail is retrieved from localStorage
+    if (!userEmail) {
+        console.error('Error: No email found in localStorage.');
+        return;
+    }
 
-// Have yet to implement the following:
-// - updateMenuItem()
-// - deleteMenuItem()
-// - fetchMenuItems() thinking about making this to display existing menu items
+    getUserDataByEmail(userEmail)
+        .then(restaurantData => {
+            const menuItems = restaurantData.menu; // Assuming 'menu' is part of the restaurantData
+            const menuContainer = document.getElementById('Menu');
 
+            // Clear the menu container before adding new items
+            menuContainer.innerHTML = '';
 
-// //This is a harded coded restaurant for testing purposes
-// async function createTestRestaurant() {
-//     try {
-//         // Create a test restaurant
-//         const testRestaurant = await Restaurant.create({
-//             name: 'Restaurant1',
-//             email: 'restaurant1@email.com',
-//             address: '777 Main St, Cityville',
-//             cuisine: 'Italian',
-//             restHours: 'Mon-Sat: 11am-10pm',
-//             menu: [
-//                 { itemName: 'Spaghetti', price: 12.99, allergen: 'egg' },
-//                 { itemName: 'Margherita Pizza', price: 10.99, allergen: 'gluten' },
-//                 { itemName: 'Tiramisu', price: 6.99, allergen: 'dairy'}
-//             ],
-//         });
-//         console.log('Test restaurant created:', testRestaurant);
-//     } catch (error) {
-//         console.error('Error creating test restaurant:', error);
-//     }
-// }
+            // Dynamically create menu item elements
+            menuItems.forEach(item => {
+                const menuItemElement = document.createElement('div');
+                menuItemElement.className = 'menuItem';
+
+                menuItemElement.innerHTML = `
+                    <h4>${item.itemName}</h4>
+                    <p>Price: $${item.price.toFixed(2)}</p>
+                    <p>Ingredients: ${item.ingredients.join(', ')}</p>
+                    <p>Allergens: ${item.allergens.join(', ')}</p>
+                `;
+
+                // Append the menu item to the menu container
+                menuContainer.appendChild(menuItemElement);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching menu:', error);
+        });
+}
+
+// Call this function when the page loads to display the menu
+window.addEventListener('DOMContentLoaded', (event) => {
+    displayRestaurantMenu();
+});
+
+//display user information
+function displayRestaurantInformation() {
+    const userEmail = localStorage.getItem('email');
+
+    // Ensure userEmail is retrieved from localStorage
+    if (!userEmail) {
+        console.error('Error: No email found in localStorage.');
+        return;
+    }
+
+    getUserDataByEmail(userEmail)
+        .then(restaurantData => {
+            if (!restaurantData) {
+                throw new Error('No restaurant data returned.');
+            }
+
+            // Update restaurant information on the profile page
+            document.getElementById('name').textContent = `Restaurant Name: ${restaurantData.name}`;
+            document.getElementById('address').textContent = `Address: ${restaurantData.address}`;
+            document.getElementById('cuisine').textContent = `Cuisine: ${restaurantData.cuisine}`;
+            document.getElementById('restHours').textContent = `Hours: ${restaurantData.restHours}`;
+        })
+        .catch(error => {
+            console.error('Error fetching restaurant information:', error);
+        });
+}
+
+// Call this function when the page loads to display the restaurant information
+window.addEventListener('DOMContentLoaded', (event) => {
+    displayRestaurantInformation();
+    displayRestaurantMenu(); // This function should already be defined to display the menu
+});
