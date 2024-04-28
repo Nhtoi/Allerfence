@@ -26,9 +26,8 @@ function signUp(event) {
         phoneNum,
         email,
         password,
-        userType,
+        userType
     };
-
     fetch('http://localhost:3000/signup', {
         method: 'POST',
         headers: {
@@ -36,29 +35,44 @@ function signUp(event) {
         },
         body: JSON.stringify(signUpData),
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json(); // Read the response as JSON
-    })
-    .then(data => {
-        // Handle the response from the server
-        console.log(data);
-
-        // Assuming your server sends a success status or token upon successful sign-up
-        if (data.success) {
-            // Redirect or show success message
-            alert("Sign-up successful!");
-            window.location.href = "login.html"; // Redirect to login page
-        } else {
-            // Handle sign-up failure (show error message, etc.)
-            console.error('Sign-up failed:', data.error);
-            alert("Sign-up failed. Please try again.");
-        }
-    })
-    .catch(error => console.error('Error:', error.message));
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+    
+            if (data.success) {
+                alert("Sign-up successful!");
+                redirectBasedOnUserType(userType); // Redirect based on userType
+            } else {
+                console.error('Sign-up failed:', data.error);
+                alert("Sign-up failed. Please try again.");
+            }
+        })
+        .catch(error => console.error('Error:', error.message));
 }
 
-// Add an event listener to the form
-document.querySelector("form").addEventListener("submit", signUp);
+function redirectBasedOnUserType(userType) {
+    let loginUrl = "";
+
+    switch (userType) {
+        case "Vendor":
+            loginUrl = "createRestaurant.html";
+            break;
+        case "Customer":
+            loginUrl = "../customer/login.html";
+            break;
+        case "Driver":
+            loginUrl = "../driver/login.html";
+            break;
+        default:
+            // handle default case or show an error message
+            break;
+    }
+
+    // Redirect to the constructed URL
+    window.location.href = loginUrl;
+}

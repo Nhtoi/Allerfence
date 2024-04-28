@@ -1,42 +1,14 @@
+const Customer = require('../models/customer.model');
 const Restaurant = require('../models/restaurant.model');
 
-async function createRestaurant(req, res) {
-    const { name, address, cuisine, menuHours } = req.body;
-
+async function getRestaurantByEmail(req, res) {
+    const { email } = req.body;
     try {
-        // Check if the restaurant already exists
-        const existingRestaurant = await Restaurant.findOne({ name });
-        if (existingRestaurant) {
-            return res.status(400).json({ error: "Restaurant already exists" });
-        }
-
-        // Create a new restaurant
-        const newRestaurant = new Restaurant({
-            name,
-            address,
-            cuisine,
-            menuHours,
-        });
-
-        // Save the new restaurant to the database
-        await newRestaurant.save();
-
-        res.status(201).json(newRestaurant);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Internal Server Error" });
-    }
-}
-
-async function searchRestaurant(req, res) {
-    const { name } = req.body; 
-
-    try {
-        const restaurant = await Restaurant.findOne({ name });
-        if (restaurant) {
-            res.status(200).json(restaurant);
+        const user = await Restaurant.findOne({ email });
+        if (user) {
+            res.status(200).json({ userId: user._id, ...user.toObject() });
         } else {
-            res.status(404).json({ error: "Restaurant not found" });
+            res.status(404).json({ error: "User not found" });
         }
     } catch (error) {
         console.error(error);
@@ -45,10 +17,11 @@ async function searchRestaurant(req, res) {
 }
 //add menu item
 async function addMenuItem(req, res) {
-    const { restaurantId, itemName, price, ingredients, allergens } = req.body;
+    const { email, itemName, price, ingredients, allergens } = req.body;
 
     try {
-        const restaurant = await Restaurant.findById('661c61c2d57808d1b31eb7fe');
+        // trying to find the restaurant with the given email
+        const restaurant = await Restaurant.findOne({ 'email': email });
         if (!restaurant) {
             return res.status(404).json({ error: "Restaurant not found" });
         }
@@ -62,6 +35,60 @@ async function addMenuItem(req, res) {
         console.error(error);
         res.status(500).json({ error: "Internal Server Error" });
     }
+}
+
+async function createRestaurant(req, res) {
+    try {
+        const { name, address, cuisine, restHours, email } = req.body;
+
+        // Basic validation
+        if (!name || !address || !cuisine || !restHours ||!email) {
+            return res.status(400).json({ error: "All fields are required" });
+        }
+
+        const newRestaurant = new Restaurant({
+            name,
+            address,
+            cuisine,
+            restHours,
+            email,
+            menu: [] // Starts with an empty menu
+        });
+
+        await newRestaurant.save();
+        res.status(201).json(newRestaurant);
+    } catch (error) {
+        console.error(error);
+        // Detailed error handling
+        if (error.name === 'ValidationError') {
+            return res.status(400).json({ error: error.message });
+        }
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+
+async function searchRestaurant(req, res) {
+    const { name } = req.body;
+
+    try {
+        const restaurant = await Restaurant.findOne({ name });
+        if (restaurant) {
+            res.status(200).json(restaurant);
+        } else {
+            res.status(404).json({ error: "Restaurant not found" });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+module.exports = {
+    getRestaurantByEmail,
+    createRestaurant,
+    searchRestaurant,
+    addMenuItem
 }
 // //delete menu Item
 // async function deleteMenuItem(req, res) {
@@ -105,11 +132,3 @@ async function addMenuItem(req, res) {
 //         res.status(500).json({ error: "Internal Server Error" });
 //     }
 // }
-
-module.exports = {
-    createRestaurant, 
-    searchRestaurant,
-    addMenuItem,
-    //deleteMenuItem,
-    //updateMenuItem
-};

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <h1>Create Your Restaurant</h1>
+    <form id="createRestaurantForm" onsubmit="createRestaurant(event)">
+        <label for="name">Restaurant Name</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" required>
+        <br><br>
+        
+        <label for="cuisine">Cuisine</label>
+        <input type="text" id="cuisine" name="cuisine" required>
+        
+        <label for="hours">Your Restaurant Hours</label>
+        <input type="text" id="restHours" name="restHours" required>
+        
+        <label for="email">Confirm Manager email</label>
+        <input type="text" id="email" name="email" required>
+        
+
+        <button type="submit" id="signUpBut">Sign Up</button>
+    </form>
+    
+    <script src="/restaurant/restaurant.js"></script>
+</body>
+
+</html>

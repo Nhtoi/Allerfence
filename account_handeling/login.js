@@ -4,6 +4,7 @@ function login(event) {
     const userType = document.getElementById("dropDownOptions").value;
     const email = document.querySelector(".emailInput").value;
     const password = document.querySelector(".passwordInput").value;
+    
 
     const loginData = {
         userType,
@@ -54,7 +55,7 @@ function redirectBasedOnAccountType(userType) {
 
     switch (userType) {
         case "Vendor":
-            loginUrl = "../restaurant/restaurant.html";
+            loginUrl = "../restaurant/restaurantProfile.html";
             break;
         case "Customer":
             loginUrl = "../customer/dashboard.html";

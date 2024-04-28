@@ -6,15 +6,16 @@
     <link rel="stylesheet" href="restaurant.css">
     <title>Restaurant Dashboard</title>
 </head>
-<!--
-    This page is going to be the main page for restaurant.
-    It will have a list of incoming orders, a list of completed orders, 
-    and a list of the restaurant's earnings for the day. 
--->
+
 <body>
-    <section>
+    <section id="sideBar">
+        <a href="restaurantProfile.html">View Profile</a>
+        <a href="../index.html">Log-out</a>
+    </section>
+    <section id="incomingOrders">
+
         <h2>Incoming Orders</h2>
-        <!-- Add content related to incoming orders here -->
+        <!-- Incoming orders will be displayed here -->
         <div class="menu-item">
             <p>Order #123</p>
             <button>Accept Order</button>
@@ -27,15 +28,12 @@
             <p>Order #125</p>
             <button>Accept Order</button>
         </div>
-    </section>
 
-    <section>
+    <section id="earnings">
         <h2>Restaurant Earnings for the Day</h2>
-        <p class="earnings">$500.00</p>
+        <p class="totalEarnings">$500.00</p>
     </section>
-    
-    <a href="../index.html">Log-out</a>
-    
-    <script src="restaurant.js"></script>
+</section>
+    <script src="/restaurant/restaurant.js"></script>
 </body>
 </html>

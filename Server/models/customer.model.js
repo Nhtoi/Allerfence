@@ -30,12 +30,13 @@ const CustomerSchema = mongoose.Schema(
             ref: "UserType",
             required: true
         },
-        Allergies:{
+        Allergies: {
             type: String,
             required: false
         },
-        Restaurant:{
-            type: String,
+        Restaurant: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Restaurant',
             required: false
         }
     },

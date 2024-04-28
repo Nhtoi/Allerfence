@@ -1,9 +1,17 @@
 const mongoose = require('mongoose');
-// Defining schema
+// Defining rest schema
 const RestaurantSchema = mongoose.Schema({
-    address: {
+    userId: {
+        type: mongoose.Schema.Types.ObjectId, 
+        required: false
+    },
+    name: {
         type: String,
         required: false
+    },
+    address: {
+        type: String,
+        required: false 
     },
     cuisine: {
         type: String,
@@ -13,43 +21,28 @@ const RestaurantSchema = mongoose.Schema({
         type: String,
         required: false
     },
+    email: {
+        type: String,
+        required: [true, "Email is required"]
+    },
     menu: [{
         itemName: {
             type: String,
-            required: true
+            required: false
         },
         price: {
             type: Number,
-            required: true
+            required: false
         },
         ingredients: [{
             type: String,
-            required: true
+            required: false
         }],
         allergens: [{
             type: String,
-            required: true
+
         }]
-    }],
-    reviews: [{
-        userId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User',
-            required: true
-        },
-        rating: {
-            type: Number,
-            required: true
-        },
-        comment: {
-            type: String,
-            required: true
-        },
-        createdAt: {
-            type: Date,
-            default: Date.now
-        }
-    }]
+    }], 
 }, {
     timestamps: true
 });

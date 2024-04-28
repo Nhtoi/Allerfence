@@ -17,17 +17,10 @@ section {
 h2 {
     color: white;
 }
-#earnings{
-    margin-top: 20px
-}
-.totalEarnings {
-    font-size: 1.5em;
-    color: #4CAF50;
-}
 #sideBar {
     height: 100%;
     
-    width: 140px;
+    width: 100px;
  
     position: fixed;
     
@@ -68,10 +61,17 @@ h2 {
         font-size: 18px;
     }
 }
-
-#incomingOrders {
-    margin-left: 170px; /* Same as the width of the sidebar */
+#restaurantProfile,
+#menuItems,
+#Menu {
+    margin-left: 140px; /* Same as the width of the sidebar */
     padding: 0px 10px;
     display: flex;
     flex-direction: column;
+}
+#addMenuItemForm{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 20px;
 }
