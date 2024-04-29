@@ -5,6 +5,10 @@ const cors = require('cors')
 const userRoute = require('../routes/user.route.js');
 const app = express()
 const { Server } = require("socket.io");
+const chatRoutes = require('../routes/chat.route.js');
+const Message = require('../models/message.model.js');
+const testOrdersModel = require('../models/testOrders.model.js');
+
 
 //middleware
 app.set('view engine', 'ejs');
@@ -19,12 +23,82 @@ app.use(cors({
 
 //routes
 app.use('/', userRoute)
+app.use('/api/chat', chatRoutes);
+
+
+app.get('/activeOrders',async(req,res)=>{
+try{
+const orders = await testOrdersModel.find()
+return res.status(201).json(orders)
+}catch(err){
+    return res.status(500).json({ err });
+
+}
+
+})
+app.get('/activeOrders/:id',async(req,res)=>{
+    try{
+    const orders = await testOrdersModel.findById(req.params.id)
+
+    return res.status(201).json(orders)
+    }catch(err){
+        return res.status(500).json({ err });
+    
+    }
+    
+    })
+
+    app.put('/activeOrders/:id',async(req,res)=>{
+        try{
+        const ordersUpdated = await testOrdersModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
+    
+        return res.status(201).json(ordersUpdated)
+        }catch(err){
+            return res.status(500).json({ err });
+        
+        }
+        
+        })
+    
+        app.put('/activeOrders/:id/accept', async (req, res) => {
+            try {
+                const orderId = req.params.id;
+                const acceptedOrder = await testOrdersModel.findByIdAndUpdate(orderId, { orderStatus: 'accepted' }, { new: true });
+                if (!acceptedOrder) {
+                    return res.status(404).json({ message: 'Order not found' });
+                }
+                return res.status(200).json(acceptedOrder);
+            } catch (error) {
+                console.error("Error accepting order:", error);
+                return res.status(500).json({ error: 'Internal server error' });
+            }
+        });
+
+
+app.post('/postOrders', async(req, res) => {
+    try{
+        const newOrder = await testOrdersModel.create(req.body)
+        return res.status(201).json(newOrder);
+
+    }catch(err){
+        return res.status(500).json({ err });
+    }
+   
+});
+
+
+
+
+
+
+
+
 
 //connet to db and port 3000
 mongoose.connect('mongodb+srv://admin:xCDV9stvlD6jrgQy@allerfence-users.wmfafph.mongodb.net/Allerfence-users?retryWrites=true&w=majority')
     .then(() => {
         console.log("Connected to Data Base - users")
-        app.listen(3000, () => {
+        app.listen(8080, () => {
             console.log("Started on Port 3000")
         })
     })
@@ -45,9 +119,9 @@ const io = new Server(server, {
     // Configure CORS settings for the socket.io server
     cors: {
         // Allow requests from the specified origin
-        origin: "http://localhost:3002",
+        origin: "*",
         // Allow only specified methods (GET and POST)
-        methods: ["GET", "POST"],
+        methods: ["GET", "POST",],
     },
 });
 
@@ -55,22 +129,49 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
     // Log a message when a user connects, including their socket ID
     console.log(`User Connected: ${socket.id}`);
-
+   
+    socket.on("fetch_all_messages", async (room) => {
+        try {
+            // Fetch all messages for the specified room from MongoDB
+            const messages = await Message.find({ room }).exec();
+    
+            // Emit the fetched messages back to the client
+            socket.emit("all_messages", messages);
+        } catch (error) {
+            console.error("Error fetching messages:", error);
+        }
+    });
+    
     // Event listener for when a user joins a room
-    socket.on("join_room", (data) => {
-        // Join the specified room
-        socket.join(data);
-        // Log a message indicating which user joined which room
-        console.log(`User with ID: ${socket.id} joined room: ${data}`);
+    socket.on("join_room", async (data) => {
+        try {
+            socket.join(data);
+            const messages = await Message.find({ room: data }).exec();
+            socket.emit('fetched_messages', messages);
+            for await (const doc of messages) {
+                console.log(doc);
+              }
+            console.log(`User with ID: ${socket.id} joined room: ${data}`);
+        } catch (error) {
+            console.error('Error fetching messages:', error);
+        }
     });
 
-    // Event listener for when a user sends a message
-    socket.on("send_message", (data) => {
+
+    socket.on("send_message", async (data) => {
         // Log the message data received from the user
+         socket.to(data.room).emit("receive_message", data);
         console.log(data);
-        // Send the received message to all clients in the same room except the sender
-        socket.to(data.room).emit("receive_message", data);
-    });
+        // Save the message to the database
+        try {
+          const message = new Message(data);
+          await message.save();
+          // Send the received message to all clients in the same room except the sender
+         
+        } catch (error) {
+          console.error("Error saving message:", error);
+        }
+      });
 
     // Event listener for when a user disconnects
     socket.on("disconnect", () => {
