@@ -1,0 +1,4 @@
+[submodule "Allerfence"]
+	path = Allerfence
+	url = https://github.com/Nhtoi/Allerfence.git
+	branch = Gps-And-Chat
