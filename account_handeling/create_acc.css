@@ -20,6 +20,8 @@ nav {
 .greeting{
     display: flex;
     justify-content: center;
+    font-family: "Bungee";
+    
 }
 form{
     border-style: solid;

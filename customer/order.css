@@ -3,8 +3,9 @@ body {
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
-    background-color: #ffffff;
+    background-color: black;
     color: #fff;
+    font-family: 'Ubuntu';
 }
 .container{
     display: flex;
@@ -42,6 +43,7 @@ h2 {
     text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'Ubuntu';
 }
 
 .button:hover {
