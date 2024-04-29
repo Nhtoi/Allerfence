@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const Allergy = require('../models/allergies.model') // Import the Allergies schema
 const fs = require('fs')
-const { parse } = require('csv-parse')
 const app = express()
 const restaurantRoute = require('../routes/restaurant.route.js')
 const userRoute = require('../routes/user.route.js')
