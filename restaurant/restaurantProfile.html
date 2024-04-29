@@ -24,7 +24,7 @@
     <section id="menuItems">
         <h2>Create Your Menu!</h2>
         <h3>Add New Menu Item</h3>
-        <form id="addMenuItemForm" onsubmit="addMenuItem(event)">
+        <form id="addMenuItemForm">
             <label for="itemName">Item Name:</label>
             <input type="text" id="itemName" name="itemName" required><br>
 
@@ -37,8 +37,9 @@
             <label for="allergens">Allergens (comma-separated):</label>
             <input type="text" id="allergens" name="allergens" required><br>
 
-            <button type="submit">Add Item</button>
+            
         </form>
+            <button id="submit">Add Item</button>
         <div id="message"></div>
     </section>
     <!--Users Menu as they addMenuItems-->

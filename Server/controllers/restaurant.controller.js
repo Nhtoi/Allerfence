@@ -1,5 +1,5 @@
-const Customer = require('../models/customer.model');
 const Restaurant = require('../models/restaurant.model');
+const Order = require('../models/orders.model')
 
 async function getRestaurantByEmail(req, res) {
     const { email } = req.body;
@@ -17,26 +17,44 @@ async function getRestaurantByEmail(req, res) {
 }
 //add menu item
 async function addMenuItem(req, res) {
-    const { email, itemName, price, ingredients, allergens } = req.body;
+    console.log('Received request body:', req.body);
+    const { email, itemName, price, ingredients, allergens, restaurantId } = req.body;
+    
+    console.log("What type is restaurantID: " + typeof req.body.restaurantId)
 
-    try {
-        // trying to find the restaurant with the given email
-        const restaurant = await Restaurant.findOne({ 'email': email });
-        if (!restaurant) {
-            return res.status(404).json({ error: "Restaurant not found" });
+    console.error(email, restaurantId);
+        if(!email || !restaurantId){
+            console.error(email, restaurantId)
+            return res.status(400).json({error: "Missing email and resId"})
         }
-
-        const newMenuItem = { itemName, price, ingredients, allergens };
-        restaurant.menu.push(newMenuItem);
-
-        await restaurant.save();
-        res.status(201).json(newMenuItem);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Internal Server Error" });
+        try {
+            // Find the restaurant with the given email and restaurantId
+            const restaurant = await Restaurant.findOne({ email, _id: restaurantId });
+    
+            if (!restaurant) {
+                console.error(`No restaurant found with email: ${email} and restaurantId: ${restaurantId}`);
+                return res.status(404).json({ error: "Restaurant not found." });
+            }
+    
+            // Create the new menu item
+            const newMenuItem = {
+                itemName,
+                price,
+                ingredients,
+                allergens
+            };
+            restaurant.menu.push(newMenuItem);
+    
+            // Save the updated restaurant
+            await restaurant.save();
+    
+            // Return the new menu item as a response
+            res.status(201).json(newMenuItem);
+        } catch (error) {
+            console.error('Error adding menu item:', error);
+            res.status(500).json({ error: "Internal Server Error" });
+        }
     }
-}
-
 
 async function createRestaurant(req, res) {
     try {
@@ -85,11 +103,30 @@ async function searchRestaurant(req, res) {
     }
 }
 
+
+async function getOrdersByRestaurantId(req, res) {
+    const { restaurantId } = req.params;
+
+    try {
+        const orders = await Order.find({ restaurantId });
+        res.status(200).json(orders);
+    } catch (error) {
+        console.error('Error retrieving orders:', error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+module.exports = {
+    getOrdersByRestaurantId,
+};
+
+
 module.exports = {
     getRestaurantByEmail,
     createRestaurant,
     searchRestaurant,
-    addMenuItem
+    addMenuItem,
+    getOrdersByRestaurantId
 }
 // //delete menu Item
 // async function deleteMenuItem(req, res) {

@@ -4,14 +4,20 @@ const createOrder = async (req, res) => {
     try {
         console.log(req.body);
         const data = {
+            customerName: req.body.name,
             orderId: req.body.orderId,
             userId: req.body.userId,
+            restaurantId: req.body.restaurantId,
+            customerAddress: req.body.customerAddress,
+            restaurantAddress: req.body.restaurantAddress,
             status: req.body.status,
             items: req.body.items.map(item => ({
                 name: item.name,
                 quantity: item.quantity,
                 price: item.price,
             })),
+            specialInstructions: req.body.specialInstructions,
+            total: req.body.total,
             type: req.body.type,
             restaurant: {} // You can add restaurant data here if needed
         };

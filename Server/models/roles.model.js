@@ -1,5 +1,5 @@
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const userTypeSchema = mongoose.Schema(
     {
@@ -12,8 +12,8 @@ const userTypeSchema = mongoose.Schema(
     {
         timestamps: true
     }
-);
+)
 
-const UserType = mongoose.model('UserType', userTypeSchema);
+const UserType = mongoose.model('UserType', userTypeSchema)
 
-module.exports = UserType;
+module.exports = UserType

@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-// Defining rest schema
+
 const RestaurantSchema = mongoose.Schema({
-    userId: {
+    
+    restaurantId: {
         type: mongoose.Schema.Types.ObjectId, 
         required: false
     },

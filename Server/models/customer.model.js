@@ -13,6 +13,11 @@ const CustomerSchema = mongoose.Schema(
                 required: [true, "Last name is required"]
             }
         },
+        address:{
+            type: String,
+            required: false,
+            default: 'Unknown'
+        },
         phoneNum: {
             type: String,
             required: [true, "Phone number is required"]
@@ -31,8 +36,9 @@ const CustomerSchema = mongoose.Schema(
             required: true
         },
         Allergies: {
-            type: String,
-            required: false
+            type: [String],
+            required: false,
+            default: []
         },
         Restaurant: {
             type: mongoose.Schema.Types.ObjectId,

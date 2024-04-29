@@ -19,9 +19,10 @@ function getUserDataByEmail(email) { //retrieve user data based on email
 }
 // Retrieve email from local storage
 const userEmail = localStorage.getItem('email');
-
-function addMenuItem(event) {
-    event.preventDefault();
+const addButton = document.getElementById('submit')
+addButton.addEventListener('click', addMenuItem)
+function addMenuItem() {
+ 
     const userEmail = localStorage.getItem('email');
 
     // Ensure userEmail is retrieved from localStorage
@@ -35,26 +36,28 @@ function addMenuItem(event) {
             if (!restaurantData) {
                 throw new Error('No restaurant data returned.');
             }
-            // Extract restaurant ID from the response
             const restaurantId = restaurantData._id;
-
+            console.log('Email:', userEmail);
+            console.log('Restaurant ID:', restaurantId);
+        
             // Construct menu item data
             const itemName = document.getElementById('itemName').value;
             const price = parseFloat(document.getElementById('price').value);
             const ingredients = document.getElementById('ingredients').value.split(',');
             const allergens = document.getElementById('allergens').value.split(',');
-
+        
             const menuItemData = {
-                restaurantId, // Include the restaurantId in the request
-                itemName,
-                price,
-                ingredients,
-                allergens
+                email: userEmail, // Include the restaurantId in the request
+                itemName: itemName,   
+                price: price,
+                ingredients: ingredients ,
+                allergens: allergens,
+                restaurantId: restaurantId    
             };
 
             console.log('Sending request with data:', menuItemData);
             // Fetch request to add a menu item
-            return fetch('http://localhost:3000/restaurant/addMenuItem', {
+            return fetch('http://localhost:3000/addMenuItem', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -197,7 +200,73 @@ function displayRestaurantInformation() {
         });
 }
 
-// Call this function when the page loads to display the restaurant information
+function displayOrders(event) {
+    event.preventDefault();
+    const userEmail = localStorage.getItem('email');
+
+    // Ensure userEmail is retrieved from localStorage
+    if (!userEmail) {
+        console.error('Error: No email found in localStorage.');
+        return;
+    }
+
+    // Fetch user data by email to get the restaurantId
+    getUserDataByEmail(userEmail)
+        .then(restaurantData => {
+            if (!restaurantData) {
+                throw new Error('No restaurant data returned.');
+            }
+
+            // Get restaurantId
+            const restaurantId = restaurantData._id;
+
+            // Fetch orders for the restaurant
+            return fetch(`http://localhost:3000/orders/${restaurantId}`);
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(orders => {
+            // Display the orders in the appropriate section
+            const ordersContainer = document.getElementById('incomingOrders');
+            ordersContainer.innerHTML = ''; // Clear the existing content
+
+            orders.forEach(order => {
+                // Create a div element for each order
+                const orderElement = document.createElement('div');
+                orderElement.className = 'menu-item';
+                
+                // Extract and display order details
+                const customerName = order.customerName; // Accessing customer name
+                
+                const total = (order.total && typeof order.total === 'number') ? order.total.toFixed(2) : 'N/A';
+                const specialInstructions = order.specialInstructions
+                const itemsList = order.items.map(items => `<li>${items.name} (${items.quantity}) $${items.price}</li>`).join('');
+                
+                orderElement.innerHTML = `
+                    <p>Order #${order._id}</p>
+                    <p>Total: $${total}</p>
+                    <p>Customer: ${customerName}</p>
+                    <p>Items:</p>
+                    <ul>${itemsList}</ul>
+                    <p>Status: ${order.status}</p>
+                    <p>Special Instructions: ${specialInstructions}</p>
+                    <button>Accept Order</button>
+                `;
+
+                // Append the order element to the orders container
+                ordersContainer.appendChild(orderElement);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching orders:', error);
+        });
+}
+
+// Call the function when the page loads
 window.addEventListener('DOMContentLoaded', (event) => {
     displayRestaurantInformation();
     displayRestaurantMenu(); // This function should already be defined to display the menu
