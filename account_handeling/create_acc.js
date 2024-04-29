@@ -63,13 +63,12 @@ function redirectBasedOnUserType(userType) {
             loginUrl = "createRestaurant.html";
             break;
         case "Customer":
-            loginUrl = "../customer/login.html";
+            loginUrl = "login.html";
             break;
         case "Driver":
-            loginUrl = "../driver/login.html";
+            loginUrl = "login.html";
             break;
         default:
-            // handle default case or show an error message
             break;
     }
 

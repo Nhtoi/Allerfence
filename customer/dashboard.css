@@ -22,6 +22,8 @@ body {
     overflow-x: hidden;
     /* Disable horizontal scroll */
     padding-top: 20px;
+    font-family: 'Bungee';
+    font-size: small;
 }
 
 /* The navigation menu links */
@@ -55,6 +57,13 @@ body {
     padding: 0px 10px;
     display: flex;
     flex-direction: column;
+    font-family: 'Ubuntu';
+}
+button{
+    font-family: 'Ubuntu';
+}
+#searchForm{
+    margin-top: 20px;
 }
 .clientOrder{
     border-style: solid;
@@ -62,4 +71,9 @@ body {
     width: 600px;
     padding:10px;
     margin-top: 20px;
+}
+h1{
+    font-family: 'Bungee';
+    display: flex;
+    justify-self: center;
 }

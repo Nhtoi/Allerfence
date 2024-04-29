@@ -4,24 +4,15 @@ body {
     height: 100%;
     margin: 0%;
     color: white;
-}
-
-nav {
-    font-family: "Bungee";
-    padding-left: 15px;
-}
-
-#logo {
-    color: white;
-    font-size: 30px;
-    text-decoration: none;
+    font-family: "Ubuntu";
 
 }
-.greeting{
+#greeting{
     display: flex;
-    justify-content: center;
-    font-family: "Bungee";
-    font-size: small;
+    flex-direction: column;
+    align-items: center;
+   font-family: 'Bungee';
+
 }
 form{
     border-style: solid;
@@ -35,6 +26,7 @@ form{
     padding-bottom: 5%;
     margin-left: 32%;
     margin-right: 32%;
+
 }
 #signUpBut{
     color: white;

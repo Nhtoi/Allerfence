@@ -121,8 +121,8 @@ function createRestaurant(event) {
         .then(data => {
             console.log(data);
 
-            alert("Creating your Restaurant was successful!");
-            window.location.href = "/restaurant/restaurantProfile.html";
+            alert("Creating your Restaurant was successful!"); //5:37 pm changed redirection page
+            window.location.href = "../account_handeling/login.html";
         })
         .catch(error => {
             console.error('Error:', error.message);
