@@ -4,6 +4,8 @@ body {
   padding: 20px;
   box-sizing: border-box;
   font-family: "Ubuntu";
+  background-color: #0A0806;
+    color: white;
 }
 
 form {
@@ -29,7 +31,7 @@ input {
   font-family: "Ubuntu";
 }
 
-h1 {
+h1, h2 {
   font-family: "Bungee";
   justify-content: center;
 }

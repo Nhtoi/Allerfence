@@ -5,6 +5,7 @@ body {
     box-sizing: border-box;
     background-color: #0A0806;
     color: white;
+    font-family: 'Ubuntu';
 }
 
 section {
@@ -17,13 +18,7 @@ section {
 h2 {
     color: white;
 }
-#earnings{
-    margin-top: 20px
-}
-.totalEarnings {
-    font-size: 1.5em;
-    color: #4CAF50;
-}
+
 #sideBar {
     height: 100%;
     
@@ -41,6 +36,7 @@ h2 {
     overflow-x: hidden;
     /* Disable horizontal scroll */
     padding-top: 20px;
+    font-family:'Bungee';
 }
 
 /* The navigation menu links */
@@ -74,4 +70,5 @@ h2 {
     padding: 0px 10px;
     display: flex;
     flex-direction: column;
+    padding-bottom: 15px;
 }
