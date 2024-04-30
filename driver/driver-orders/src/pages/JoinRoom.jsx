@@ -1,17 +1,16 @@
-// Importing CSS file for styling
-import "./App.css";
 // Importing socket.io-client library for socket connection
 import io from "socket.io-client";
 // Importing useState hook from React for managing state
 import { useState } from "react";
-// Importing Chat component from Chat.js file
-import Chat from "./Chat";
+import ChatRoom from "./ChatRoom";
+import '../Chat.css';
+
 
 // Connecting to the server using socket.io-client
 const socket = io.connect("http://localhost:3001");
 
 // Main App component
-function App() {
+function JoinRoom() {
   // State variables for username, room, and whether to show the chat window
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
@@ -35,11 +34,11 @@ function App() {
       {!showChat ? (
         // If showChat is false, display the join chat form
         <div className="joinChatContainer">
-          <h3>Join A Chat</h3>
+          <h3>Live Chat</h3>
           {/* Input field for entering username */}
           <input
             type="text"
-            placeholder="John..."
+            placeholder="Name"
             onChange={(event) => {
               setUsername(event.target.value);
             }}
@@ -47,7 +46,7 @@ function App() {
           {/* Input field for entering room ID */}
           <input
             type="text"
-            placeholder="Room ID..."
+            placeholder="Order Number"
             onChange={(event) => {
               setRoom(event.target.value);
             }}
@@ -57,11 +56,11 @@ function App() {
         </div>
       ) : (
         // If showChat is true, display the Chat component
-        <Chat socket={socket} username={username} room={room} />
+        <ChatRoom socket={socket} username={username} room={room} />
       )}
     </div>
   );
 }
 
 // Export the App component
-export default App;
+export default JoinRoom;

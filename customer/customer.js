@@ -4,7 +4,7 @@ let restaurantAddress = null
 
 //retrieve user data based on email
 function getUserDataByEmail(email) {
-    return fetch('http://localhost:3000/getUserByEmail', {
+    return fetch('http://localhost:3003/getUserByEmail', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ function searchRestaurant(event) {
     const restaurantName = userInputData.get('search')
 
     // Perform a search request to your server
-    fetch('http://localhost:3000/searchRestaurant', {
+    fetch('http://localhost:3003/searchRestaurant', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -145,7 +145,7 @@ function CreateOrder() {
         let specialInstructions = "None";
 
         // Fetch allergy-ingredient mapping from backend
-        fetch('http://localhost:3000/getAllergyIngredientMapping', {
+        fetch('http://localhost:3003/getAllergyIngredientMapping', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -200,7 +200,7 @@ function CreateOrder() {
             };
             
             console.log('orderData:', orderData);
-            fetch('http://localhost:3000/createOrder', {
+            fetch('http://localhost:3003/createOrder', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -291,7 +291,7 @@ const TrackOrder = () => {
         // get user's ID
         const userId = userData._id
         console.log(userId)
-        fetch(`http://localhost:3000/trackOrder/${userId}`)
+        fetch(`http://localhost:3003/trackOrder/${userId}`)
         .then(response => {
             if (response.ok) {
                 return response.json()
@@ -347,7 +347,7 @@ const CancelOrder = () => {
         console.log(userId)
 
         // Send request to cancel order based on userId
-        fetch(`http://localhost:3000/cancelOrder/${userId}`, {
+        fetch(`http://localhost:3003/cancelOrder/${userId}`, {
             method: 'DELETE'
         })
         .then(response => {
@@ -375,7 +375,7 @@ const selectedAllergies = [];
 // Function to fetch allergies and display them in the UI
 async function fetchAllergies() {
     try {
-        const response = await fetch('http://localhost:3000/displayAllergies');
+        const response = await fetch('http://localhost:3003/displayAllergies');
         if (response.ok) {
             const allergies = await response.json();
             // Display the allergies in the UI
@@ -463,7 +463,7 @@ function updateAllergies(selectedAllergies) {
     console.log('Sending request data:', requestData);
 
     // Send a POST request to the server to update the user's allergies
-    fetch('http://localhost:3000/updateAllergies', {
+    fetch('http://localhost:3003/updateAllergies', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -509,7 +509,7 @@ async function updateAddress(event) {
     };
 
     // Send a POST request to the server to update the user's address
-    fetch('http://localhost:3000/addAddress', {
+    fetch('http://localhost:3003/addAddress', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

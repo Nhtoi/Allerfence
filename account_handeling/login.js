@@ -12,7 +12,7 @@ function login(event) {
         password,
     };
 
-    fetch('http://localhost:3000/login', {
+    fetch('http://localhost:3003/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

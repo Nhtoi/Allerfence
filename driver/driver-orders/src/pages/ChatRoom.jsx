@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 
-function Chat({ socket, username, room }) {
+function ChatRoom({ socket, username, room }) {
   // State variables to manage current message and message list
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
-
+  const currentTime = new Date();
+  const formattedTime = currentTime.toLocaleTimeString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit' });
   // Function to send a message
   const sendMessage = async () => {
     // Check if the current message is not empty
@@ -15,10 +16,7 @@ function Chat({ socket, username, room }) {
         room: room,
         author: username,
         message: currentMessage,
-        time:
-          new Date(Date.now()).getHours() +
-          ":" +
-          new Date(Date.now()).getMinutes(),
+        time:formattedTime,
       };
 
       // Emit the message data to the server
@@ -31,6 +29,32 @@ function Chat({ socket, username, room }) {
       setCurrentMessage("");
     }
   };
+  // Effect hook to fetch all messages when component mounts
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        // Emit an event to request all messages for the current room
+        await socket.emit("fetch_all_messages", room);
+
+        // Listen for the response containing all messages
+        socket.on("all_messages", (messages) => {
+          // Update the message list with the received messages
+          setMessageList(messages);
+        });
+      } catch (error) {
+        console.error("Error fetching messages:", error);
+      }
+    };
+
+    // Call the fetchMessages function when the component mounts
+    fetchMessages();
+
+    // Clean up function to remove the event listener when the component unmounts
+    return () => {
+      socket.off("all_messages");
+    };
+  }, [socket, room]);
+
 
   // Effect hook to handle incoming messages
   useEffect(() => {
@@ -51,12 +75,12 @@ function Chat({ socket, username, room }) {
         {/* Container that automatically scrolls to bottom */}
         <ScrollToBottom className="message-container">
           {/* Map over message list and render each message */}
-          {messageList.map((messageContent) => {
+          {messageList.map((messageContent,index) => {
             return (
-              <div
+              <div 
                 className="message"
                 id={username === messageContent.author ? "you" : "other"}
-                key={messageContent.time} // Add a unique key for each message
+                key={index+messageContent.time} // Add a unique key for each message
               >
                 <div>
                   <div className="message-content">
@@ -93,4 +117,4 @@ function Chat({ socket, username, room }) {
   );
 }
 
-export default Chat;
+export default ChatRoom;

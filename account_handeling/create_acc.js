@@ -28,7 +28,7 @@ function signUp(event) {
         password,
         userType
     };
-    fetch('http://localhost:3000/signup', {
+    fetch('http://localhost:3003/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

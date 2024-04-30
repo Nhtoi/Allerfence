@@ -1,5 +1,5 @@
 function getUserDataByEmail(email) { //retrieve user data based on email
-    return fetch('http://localhost:3000/getRestaurantByEmail', {
+    return fetch('http://localhost:3003/getRestaurantByEmail', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ function addMenuItem() {
 
             console.log('Sending request with data:', menuItemData);
             // Fetch request to add a menu item
-            return fetch('http://localhost:3000/addMenuItem', {
+            return fetch('http://localhost:3003/addMenuItem', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ function createRestaurant(event) {
         email
     };
 
-    fetch('http://localhost:3000/createRestaurant', {
+    fetch('http://localhost:3003/createRestaurant', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -221,7 +221,7 @@ function displayOrders(event) {
             const restaurantId = restaurantData._id;
 
             // Fetch orders for the restaurant
-            return fetch(`http://localhost:3000/orders/${restaurantId}`);
+            return fetch(`http://localhost:3003/orders/${restaurantId}`);
         })
         .then(response => {
             if (!response.ok) {
