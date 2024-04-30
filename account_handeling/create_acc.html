@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="create_acc.css">
+  <script src = "create_acc.js"></script> 
+    <title>Sign-Up</title>
+</head>
+<nav>
+    <a href="index.html" class id="logo">
+        <p> AllerFence</p>
+    </a>
+</nav>
+<hr>
+<body>
+    <div class="greeting">
+        <p> We are excited to see you join our community! </p>
+    </div>
+    <form id="signupForm">
+        
+        <label for="userType">User Type</label>
+        <select name="userType" id="userType" onchange="toggleRestaurantDetails()"> <!-- Added onchange event -->
+            <option value="Customer">Customer</option>
+            <option value="Driver">Driver</option>
+            <option value="Vendor">Vendor</option>
+        </select>
+        
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName">
+        <br><br>
+        
+        <label for="phoneNum">Phone Number</label>
+        <input type="text" id="phoneNum" name="phoneNum">
+        <br><br>
+        
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email">
+        <label for="conf-email">Confirm Email</label>
+        <input type="text" id="conf-email" name="conf-email">
+        <br><br>
+        
+        <label for="password">Password</label>
+        <input type="text" id="password" name="password">
+        <label for="conf-password">Confirm Password</label>
+        <input type="text" id="conf-password" name="conf-password">
+        <br><br>
+
+        <button type="submit" id="signUpBut" onclick="signUp(event)">Sign Up</button>
+
+    </form>
+    
+    <script src="create_acc.js"></script>
+</body>
+
+</html>

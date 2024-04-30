@@ -1,0 +1,37 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: "Ubuntu";
+  background-color: #0A0806;
+    color: white;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Ubuntu";
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: "Ubuntu";
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  font-family: "Ubuntu";
+}
+
+h1, h2 {
+  font-family: "Bungee";
+  justify-content: center;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="restaurantProfile.css">
+    <title>Profile</title>
+    
+</head>
+
+<body>
+    <section id="sideBar">
+        <a href="restaurant.html">Your Orders</a>
+        <a href="../index.html">Log-out</a>
+    </section>
+    <div id="restaurantProfile">
+    <!--Dynamicallty displayed rest information-->
+    <p id="name"> Restaurant Name: </p>
+    <p id="address"> Address: </p>
+    <p id="cuisine"> Cuisine: </p>
+    <p id="restHours"> Hours: </p>
+    </div>
+    <!--Where they can add Menu Items-->
+    <section id="menuItems">
+        <h2>Create Your Menu!</h2>
+        <h3>Add New Menu Item</h3>
+        <form id="addMenuItemForm">
+            <label for="itemName">Item Name:</label>
+            <input type="text" id="itemName" name="itemName" required><br>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" required><br> 
+
+            <label for="ingredients">Ingredients (comma-separated):</label>
+            <input type="text" id="ingredients" name="ingredients" required><br>
+
+            <label for="allergens">Allergens (comma-separated):</label>
+            <input type="text" id="allergens" name="allergens" required><br>
+
+            
+        </form>
+            <button id="submit">Add Item</button>
+        <div id="message"></div>
+    </section>
+    <!--Users Menu as they addMenuItems-->
+    <section id="Menu"></section>
+    <script src="restaurant.js"></script>
+</body>
+</html>

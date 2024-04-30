@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Order</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section id="sideBar">
+        <a href="profile.html">Profile</a>
+        <a href="orders.html">View Orders</a>
+        <a href="../index.html">Sign-Out</a>
+    </section>
+    <section id="main">
+        <h1>Search for your favorite restaurant!</h1>
+
+        <form id="searchForm">
+            <label for="search"></label>
+            <input type="text" name="search" class="search">
+            <button class="search-btn" onclick="searchRestaurant(event)">Search</button>
+        </form>
+
+        <div id="restaurantContainer"></div> <!-- Container for displaying restaurant information -->
+        <div id="menuItems"></div> <!-- Container for displaying menu items -->
+        <div class="createOrder-div" id="orderFormContainer" style="display: none;">        
+                <button type="button" id="create" onclick="CreateOrder()">Create Order</button>
+            </form>
+        </div>
+    </section>
+    
+   
+    <script src="customer.js"></script>
+</body>
+</html>
