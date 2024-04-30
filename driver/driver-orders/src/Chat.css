@@ -41,13 +41,13 @@
     border-radius: 5px;
     padding: 5px;
     font-size: 16px;
-    background: #43a047;
+    background: #b0740c;
     color: #fff;
     cursor: pointer;
   }
   
   .joinChatContainer button:hover {
-    background: #2e7d32;
+    background: #111111;
   }
   
   .chat-window {
@@ -101,7 +101,7 @@
     height: auto;
     min-height: 40px;
     max-width: 120px;
-    background-color: #43a047;
+    background-color: #0b9710;
     border-radius: 5px;
     color: white;
     display: flex;
@@ -184,7 +184,7 @@
   }
   
   .chat-window .chat-footer button:hover {
-    color: #43a047;
+    color: #220955;
   }
   .hide {
     opacity: 0 !important;

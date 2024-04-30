@@ -2,7 +2,6 @@
 import io from "socket.io-client";
 // Importing useState hook from React for managing state
 import { useState } from "react";
-// Importing Chat component from Chat.js file
 import ChatRoom from "./ChatRoom";
 import '../Chat.css';
 
@@ -35,11 +34,11 @@ function JoinRoom() {
       {!showChat ? (
         // If showChat is false, display the join chat form
         <div className="joinChatContainer">
-          <h3>Join A Chat</h3>
+          <h3>Live Chat</h3>
           {/* Input field for entering username */}
           <input
             type="text"
-            placeholder="John..."
+            placeholder="Name"
             onChange={(event) => {
               setUsername(event.target.value);
             }}
@@ -47,7 +46,7 @@ function JoinRoom() {
           {/* Input field for entering room ID */}
           <input
             type="text"
-            placeholder="Room ID..."
+            placeholder="Order Number"
             onChange={(event) => {
               setRoom(event.target.value);
             }}

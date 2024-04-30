@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-
 const OrderDetails = () => {
   const { id } = useParams();
   const [order, setOrder] = useState(null);
@@ -35,32 +34,33 @@ const OrderDetails = () => {
     <div>
       <h1>Order Details</h1>
       <div className="order-details">
-        <h2>Order Number: {order?.orderNumber}</h2>
-        <p>Restaurant Location: {order?.restaurantLocation}</p>
-        <p>Client Location: {order?.clientLocation}</p>
-        <h3>Menu Items:</h3>
+        <h2>Order ID: {order?.orderId}</h2>
+        <p>Customer Name: {order?.customerName}</p>
+        <p>Order Status: {order?.status}</p>
+        <h3>Items:</h3>
         <ul>
-          {order?.menuItems.map((item, index) => (
+          {order?.items.map((item, index) => (
             <li key={index}>
-              {item.itemName} - Quantity: {item.quantity} - Price: ${item.price}
+              {item.name} - Quantity: {item.quantity} - Price: ${item.price}
             </li>
           ))}
         </ul>
-        <p>Restaurant Name: {order?.restaurantName}</p>
-        <p>Client Name: {order?.clientName}</p>
-        <p>Order Status: {order?.orderStatus}</p>
+        <p>Total: ${order?.total}</p>
+        <p>Type: {order?.type}</p>
+        <p>Customer Address: {order?.customerAddress}</p>
+        <p>Restaurant Address: {order?.restaurantAddress}</p>
+        <p>Special Instructions: {order?.specialInstructions}</p>
         
         {/* Delivered Button */}
-        {order?.orderStatus !== "Delivered" && (
+        {order?.status !== "Delivered" && (
           <button onClick={handleMarkAsDelivered}>Delivered</button>
         )}
-
+  
         {/* Live Chat Button */}
         <button onClick={() => window.location.href = 'http://localhost:3000/chat'}>Live Chat</button>
         
         {/* GPS Button */}
-        <button onClick={() => window.location.href = `http://localhost:3002/?origin=${order?.restaurantLocation}&destination=${order?.clientLocation}`}>GPS</button>
-     
+        <button onClick={() => window.location.href = `http://localhost:3002/?origin=${order?.restaurantAddress}&destination=${order?.customerAddress}`}>GPS</button>
       </div>
     </div>
   );

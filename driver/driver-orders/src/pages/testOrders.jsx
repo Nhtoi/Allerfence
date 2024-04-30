@@ -32,7 +32,7 @@ const Orders = () => {
       <div className="orders">
         {orders.map((order) => (
           <div key={order._id} className="order">
-            <h2>Order Number: {order.orderNumber}</h2>
+            <h2>Order Number: {order.orderId}</h2>
             {/* Display other order details */}
             <Link to={`/activeOrders/${order._id}`}>View Details</Link>
             <button onClick={() => handleAcceptOrder(order._id)}>Accept</button>

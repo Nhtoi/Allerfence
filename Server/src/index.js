@@ -8,6 +8,7 @@ const { Server } = require("socket.io");
 const chatRoutes = require('../routes/chat.route.js');
 const Message = require('../models/message.model.js');
 const testOrdersModel = require('../models/testOrders.model.js');
+const orderModel = require('../models/orders.model.js')
 
 
 //middleware
@@ -22,13 +23,13 @@ app.use(cors({
 }));
 
 //routes
-app.use('/', userRoute)
+//app.use('/', userRoute)
 app.use('/api/chat', chatRoutes);
 
 
 app.get('/activeOrders',async(req,res)=>{
 try{
-const orders = await testOrdersModel.find()
+const orders = await orderModel.find()
 return res.status(201).json(orders)
 }catch(err){
     return res.status(500).json({ err });
@@ -38,7 +39,7 @@ return res.status(201).json(orders)
 })
 app.get('/activeOrders/:id',async(req,res)=>{
     try{
-    const orders = await testOrdersModel.findById(req.params.id)
+    const orders = await orderModel.findById(req.params.id)
 
     return res.status(201).json(orders)
     }catch(err){
@@ -50,7 +51,7 @@ app.get('/activeOrders/:id',async(req,res)=>{
 
     app.put('/activeOrders/:id',async(req,res)=>{
         try{
-        const ordersUpdated = await testOrdersModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
+        const ordersUpdated = await ordersModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
     
         return res.status(201).json(ordersUpdated)
         }catch(err){
@@ -63,7 +64,7 @@ app.get('/activeOrders/:id',async(req,res)=>{
         app.put('/activeOrders/:id/accept', async (req, res) => {
             try {
                 const orderId = req.params.id;
-                const acceptedOrder = await testOrdersModel.findByIdAndUpdate(orderId, { orderStatus: 'accepted' }, { new: true });
+                const acceptedOrder = await orderModel.findByIdAndUpdate(orderId, { orderStatus: 'accepted' }, { new: true });
                 if (!acceptedOrder) {
                     return res.status(404).json({ message: 'Order not found' });
                 }
@@ -77,7 +78,7 @@ app.get('/activeOrders/:id',async(req,res)=>{
 
 app.post('/postOrders', async(req, res) => {
     try{
-        const newOrder = await testOrdersModel.create(req.body)
+        const newOrder = await orderModel.create(req.body)
         return res.status(201).json(newOrder);
 
     }catch(err){
@@ -108,6 +109,7 @@ mongoose.connect('mongodb+srv://admin:xCDV9stvlD6jrgQy@allerfence-users.wmfafph.
 //SOCKET.IOOOOOOOOO
 // Import the 'http' module to create a server
 const http = require("http");
+const Order = require('../models/orders.model.js');
 // Import the 'cors' middleware to enable cross-origin resource sharing
 app.use(cors());
 
