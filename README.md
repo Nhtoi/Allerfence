@@ -43,10 +43,10 @@ The app should be able to:
 
 ![image](https://github.com/Nhtoi/Allerfence/blob/main/UseCase.png?raw=true)
 
-How to run: 
+How to run: </br>
 Works branch </br>
-do npm run dev
-open index.html (should look like the allerfence homepage) with live server
+do npm run dev </br>
+open index.html (should look like the allerfence homepage) with live server </br>
 you can sign up/login/createRestaurant/etc here...
 
     
