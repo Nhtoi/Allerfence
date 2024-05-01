@@ -29,19 +29,17 @@ While we can’t remove allergens, we want to try to facilitate some lives by de
 
 The app should be able to: 
 
-    Allow **customers** to communicate their experiences with certain restaurants by writing reviews.
+    Allow **customers** to place an order with their allergens displayed to restaurant.
     
-    Allow **restaurants** to communicate with a customer’s review, whether that customer left a positive or negative concern. 
+    Allow **restaurants** to ceate their menu items listing ingredients, recieve an order with their clients special instructions automatically given. 
 
-    Allow **drivers**, to communicate with restaurant/customers.
+    Allow **drivers**, to receive order and deliver to client.
 
-    Implement a rewards system for restaurant that depend on the ingredients that they list for meals. The more meals with ingredients listed, the more rewards.
-
-    Allow customers to find allergy friendly restaurants near them in GSO.
+    Allow customers to find their favorite restaurants and place an order with them.
 
     Allow customers to order food and the app automatically detect the allergens and autofill in the text book to remove certain allergens from a meal.
 
-    If a meal doesnt contain a list of ingredients, then custoemr is warned that their food may contain food allergen.
+    If a meal doesnt contain a list of ingredients, then customer is warned that their food may contain food allergen.
 
 ![image](https://github.com/Nhtoi/Allerfence/blob/main/UseCase.png?raw=true)
 
