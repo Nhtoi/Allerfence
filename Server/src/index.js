@@ -27,9 +27,12 @@ app.use((req, res, next) => {
     console.log(`[${new Date().toLocaleString()}] ${req.method} ${req.url}`)
     next()
 })
-app.use('/api/chat', chatRoutes);
-// app.use('/', userRoute)
-// app.use('/', restaurantRoute)
+//app.use('/api/chat', chatRoutes);
+
+//Comment
+app.use('/', userRoute)
+app.use('/', restaurantRoute)
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
